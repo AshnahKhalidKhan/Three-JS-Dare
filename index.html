@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>My first three.js app</title>
+    <meta charset="utf-8" />
+    <title>Bloch Sphere — three.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-      body { margin: 0; }
+      :root { --bg:#0b0f14; --fg:#e9eef5; --muted:#94a3b8; --panel:#131922; --accent:#5eead4; }
+      html, body { height: 100%; margin: 0; background: var(--bg); color: var(--fg); font: 14px/1.4 system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+      #ui {
+        position: fixed; top: 12px; left: 12px; z-index: 10;
+        background: var(--panel); border: 1px solid #1e293b; border-radius: 12px;
+        padding: 12px 14px; box-shadow: 0 10px 30px rgba(0,0,0,.35); min-width: 280px;
+      }
+      #ui h1 { margin: 0 0 8px 0; font-size: 16px; font-weight: 600; letter-spacing: .2px; }
+      .row { display: grid; grid-template-columns: 64px 1fr 52px; gap: 8px; align-items: center; margin: 8px 0; }
+      .row label { color: var(--muted); }
+      input[type="range"] { width: 100%; }
+      .small { color: var(--muted); font-size: 12px; }
+      .readout { margin-top: 8px; padding-top: 8px; border-top: 1px dashed #223048; }
+      .ket { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+      a { color: var(--accent); text-decoration: none; }
+      canvas { display: block; }
     </style>
   </head>
   <body>
+    <div id="ui" role="region" aria-label="Bloch Sphere Controls">
+      <h1>Bloch Sphere</h1>
+      <div class="row">
+        <label for="theta">θ</label>
+        <input id="theta" type="range" min="0" max="180" step="0.1" value="40" />
+        <span id="thetaDeg">40°</span>
+      </div>
+      <div class="row">
+        <label for="phi">φ</label>
+        <input id="phi" type="range" min="-180" max="180" step="0.1" value="30" />
+        <span id="phiDeg">30°</span>
+      </div>
+      <div class="small">State: <span class="ket" id="stateKet">|ψ⟩ = …</span></div>
+      <div class="readout small" id="readout">α, β and probabilities shown here.</div>
+    </div>
+
+    <!-- Use ESM CDN for three.js -->
     <script type="module" src="/main.js"></script>
   </body>
 </html>
