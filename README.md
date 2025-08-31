@@ -1,5 +1,5 @@
 # Three-JS-Dare
-A tiny project to make the smallest Three.js project ever and how to deploy it.
+A tiny project to make the smallest Three.js app ever and how to deploy it.
 
 - First things first, three.js is a **3D JavaScript library** that enables developers to create 3D experiences for the web - remember this for interviews.
 - Three.js works best with WebGL, but also works in a limited way with SVG and CSS. (What is WebGL? Bus sochtay raho ab :P)
